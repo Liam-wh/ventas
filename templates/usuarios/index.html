@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+{% block title %} USUARIOS {% endblock %}
+
+{% block content %}
+
+<div class="d-flex justify-content-between align-items-center mb-4 mt-4">
+        <h2 class="fw-bold text-dark">
+            <i class="bi bi-journal-text me-2"></i>Lista de Usuarios
+        </h2>
+        <a href="{{ url_for('usuario.create') }}" class="btn btn-success ">
+            <i class="bi bi-plus-circle me-1"></i> Nuevo Usuario
+        </a>
+    </div>
+
+<table class="table table-hover align-middle shadow-sm rounded overflow-hidden">
+    <thead class="table-dark border-1">
+        <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Username</th>
+            <th>Rol</th>
+            <th></th>
+            
+        </tr>
+    </thead>
+    <tbody class="border-1">
+        {% for user in usuarios %}
+        <tr>
+            <td>{{user.id}}</td>
+            <td>{{user.nombre}}</td>
+            <td>{{user.username}}</td>
+            <td>{{user.rol}}</td>
+
+            <td class="text-center">
+                <a href="{{url_for('usuario.edit',id=user.id)}}" class="btn btn-sm btn-warning me-4" title="Editar">
+                    <i class="bi bi-pencil-square"></i>
+                </a>
+                <a href="{{url_for('usuario.delete',id=user.id)}}" class="btn btn-sm btn-danger " title="Eliminar"
+                    onclick="return confirm('¿Estás seguro de eliminar este usuario?');">
+                    <i class="bi bi-trash-fill"></i>
+                </a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+
+</table>
+
+
+
+{% endblock %}

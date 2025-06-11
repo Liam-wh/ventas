@@ -1,0 +1,47 @@
+{% extends('base.html') %}
+
+{% block title %} USUARIOS | EDITAR {% endblock %}
+
+{% block content %}
+
+<div class="container d-flex justify-content-center mt-3 mb-5">
+    <div class="card shadow-lg p-4" style="width: 100%; max-width: 500px;">
+        <div class="card-header text-center">
+            <h3 class="text-dark">
+                Actualizar Usuario
+            </h3>
+        </div>
+        <div class="card-body">
+            <form action="{{ url_for('usuario.edit',id=usuario.id) }}" method="POST">
+                <div class="mb-3">
+                    <label for="nombre" class="form-label"><i class="bi bi-person-lines-fill me-2"></i>Nombre</label>
+                    <input type="text" class="form-control" name="nombre" value="{{usuario.nombre}}" required>
+                </div>
+                <div class="mb-3">
+                    <label for="username" class="form-label"><i class="bi bi-person-circle me-2"></i>Username</label>
+                    <input type="text" class="form-control" name="username" value="{{usuario.username}}" required>
+                </div>
+                <div class="mb-3">
+                    <label for="password" class="form-label"><i class="bi bi-lock-fill me-2"></i>Password</label>
+                    <input type="password" class="form-control" name="password">
+                </div>
+                <div class="mb-3">
+                    <label for="rol" class="form-label"><i class="bi bi-person-vcard me-2"></i>Rol</label>
+                    <select class="form-select" name="rol" required>
+                        <option value="admin" {% if usuario.rol=='admin' %} selected {% endif %}>Administrador</option>
+                        <option value="cajero" {% if usuario.rol=='cajero' %} selected {% endif %}>Cajero</option>
+                    </select>
+                </div>
+
+                <!-- Botón de Guardar -->
+                <div class="text-center mt-4 mb-3">
+                    <button type="submit" class="btn btn-primary btn-lg w-100">
+                        <i class="bi bi-check-circle-fill me-2"></i>Actualizar Usuario
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

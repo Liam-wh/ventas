@@ -1,0 +1,42 @@
+{% extends('base.html') %}
+
+{% block title %} PRODUCTOS | CREATE {% endblock %}
+
+{% block content %}
+
+
+<div class="container d-flex justify-content-center mt-3 mb-5">
+    <div class="card shadow-lg p-4" style="width: 100%; max-width: 500px;">
+        <div class="card-header text-center">
+            <h3 class="text-dark">
+                Registro de Producto
+            </h3>
+        </div>
+        <div class="card-body">
+            <form action="{{ url_for('producto.create') }}" method="POST">
+                <div class="mb-3">
+                    <label for="nombre" class="form-label"><i class="bi bi-card-text me-2"></i>Descripcion</label>
+                    <input type="text" class="form-control" name="descripcion" required>
+                </div>
+                <div class="mb-3">
+                    <label for="username" class="form-label"><i class="bi bi-currency-dollar me-2"></i>
+                        Precio</label>
+                    <input type="number" class="form-control" name="precio" min="0" step="0.01" required>
+                </div>
+                <div class="mb-3">
+                    <label for="password" class="form-label"><i class="bi bi-box-seam me-2"></i>Cantidad</label>
+                    <input type="number" class="form-control" name="stock" required>
+                </div>
+
+                <!-- Botón de Guardar -->
+                <div class="text-center mt-4 mb-3">
+                    <button type="submit" class="btn btn-primary btn-lg w-100">
+                        <i class="bi bi-check-circle-fill me-2"></i>Registrar Producto
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
