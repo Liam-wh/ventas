@@ -22,6 +22,8 @@ def inject_active_path():
     return (dict(is_active = is_active)) 
 
 
+#inicio del applicacion
+
 @app.route('/')
 def home():
     return render_template('base.html')
